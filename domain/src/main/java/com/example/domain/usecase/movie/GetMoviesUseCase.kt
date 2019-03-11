@@ -8,8 +8,8 @@ import io.reactivex.Single
 
 open class GetMoviesUseCase constructor(
     private val movieRepository: MovieRepository
-) : UseCase<GetMoviesUseCase.Params?, Single<List<Movie>>>() {
-    override fun createObservable(params: GetMoviesUseCase.Params?): Single<List<Movie>> {
+) : UseCase<GetMoviesUseCase.Params?, Single<Movie>>() {
+    override fun createObservable(params: GetMoviesUseCase.Params?): Single<Movie> {
         params?.apply {
             return movieRepository.getMoviesApi(params.type, params.fromServer)
         }
