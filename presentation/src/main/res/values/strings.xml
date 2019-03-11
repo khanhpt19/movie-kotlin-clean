@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">movie-kotlin-clean</string>
     <string name="ok">Ok</string>
+    <string name="title_popular">Popular</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_more">More</string>
 </resources>

@@ -44,4 +44,8 @@ abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
         }
         return super.onOptionsItemSelected(item)
     }
+
+    fun replaceFragment(container: Int, fragment: Fragment, TAG: String) {
+        supportFragmentManager.beginTransaction().replace(container, fragment, TAG).commit()
+    }
 }

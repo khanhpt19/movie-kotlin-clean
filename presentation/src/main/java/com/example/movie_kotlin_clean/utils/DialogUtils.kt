@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AlertDialog
 import com.example.movie_kotlin_clean.R
-import com.sample.clean.R
 
 object DialogUtils {
 
