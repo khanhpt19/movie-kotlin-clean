@@ -23,6 +23,7 @@ val repositoryModule = module {
 
 fun createDatabaseName() = Constants.DATABASE_NAME
 
-fun createAppDatabase (dbName: String, context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, dbName).build()
+fun createAppDatabase (dbName: String, context: Context) =
+    Room.databaseBuilder(context, AppDatabase::class.java, dbName).build()
 
 fun createMovieDao(appDatabase: AppDatabase)= appDatabase.movieDao()

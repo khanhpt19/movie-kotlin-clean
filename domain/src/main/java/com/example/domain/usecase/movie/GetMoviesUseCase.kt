@@ -8,10 +8,10 @@ import io.reactivex.Single
 
 open class GetMoviesUseCase constructor(
     private val movieRepository: MovieRepository
-) : UseCase<GetMoviesUseCase.Params?, Single<Movie>>() {
-    override fun createObservable(params: GetMoviesUseCase.Params?): Single<Movie> {
+) : UseCase<GetMoviesUseCase.Params?, Single<List<Movie>>>() {
+    override fun createObservable(params: Params?): Single<List<Movie>> {
         params?.apply {
-            return movieRepository.getMoviesApi(params.type, params.fromServer)
+            return movieRepository.getMoviesApi(params.hashMap)
         }
         return Single.error { Throwable(Constants.PARAMS_ERROR) }
     }
@@ -20,5 +20,5 @@ open class GetMoviesUseCase constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    data class Params(val type: String, val fromServer: Boolean)
+    data class Params(val hashMap: HashMap<String, String>)
 }

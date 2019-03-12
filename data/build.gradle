@@ -57,7 +57,10 @@ android {
             BASE_URL = "https://api.themoviedb.org/3/"
         }
 
+        def API_KEY = "f64c520a006b21aa8ea0f224091f1bfc"
+
         variant.buildConfigField "String", "BASE_URL", "\"${BASE_URL}\""
+        variant.buildConfigField "String", "API_KEY", "\"${API_KEY}\""
     }
 
     testOptions {

@@ -37,7 +37,7 @@ fun createHeaderInterceptor(
     return Interceptor { chain ->
         val request = chain.request()
         val newUrl = request.url().newBuilder()
-            .addQueryParameter("api_key", "")
+            .addQueryParameter("api_key", BuildConfig.API_KEY)
             .build()
         val newRequest = request.newBuilder()
             .url(newUrl)

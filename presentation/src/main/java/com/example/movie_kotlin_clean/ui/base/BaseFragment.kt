@@ -122,7 +122,7 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
         transit: Int = -1
     ) {
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, fragment, TAG)?.apply {
+            ?.replace(R.id.frame_layout, fragment, TAG)?.apply {
                 commitTransaction(this, addToBackStack, transit)
             }
     }
