@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.example.domain.model.Movie" />
+            type="com.example.movie_kotlin_clean.model.MovieItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_movie"
+            loadImage="@{item.poster_path}"
             android:layout_width="@dimen/dp_100"
             android:layout_height="@dimen/dp_100" />
 

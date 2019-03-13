@@ -66,7 +66,7 @@ fun ImageView.loadImage(
         setImageDrawable(placeHolder)
         return
     }
-    val requestBuilder = Glide.with(context).load(url)
+    val requestBuilder = Glide.with(context).load(BuildConfig.IMAGE_URL + url)
     val requestOptions = RequestOptions().diskCacheStrategy(
         if (isCacheSource) DiskCacheStrategy.DATA else DiskCacheStrategy.RESOURCE
     )
