@@ -17,6 +17,14 @@ abstract class BaseRecyclerAdapter<Item, ViewBinding : ViewDataBinding>(
         .setBackgroundThreadExecutor(Executors.newSingleThreadExecutor()).build()
 ) {
 
+    override fun submitList(list: List<Item>?) {
+        val newList = mutableListOf<Item>()
+        if (list != null) {
+            newList.addAll(list)
+        }
+        super.submitList(newList)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<ViewBinding> {
         return BaseViewHolder(
             DataBindingUtil.inflate<ViewBinding>(
@@ -33,7 +41,7 @@ abstract class BaseRecyclerAdapter<Item, ViewBinding : ViewDataBinding>(
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding>, position: Int) {
         try {
             val item: Item = getItem(position)
-//            holder.binding.setVariable(BR.item, item)
+            holder.binding.setVariable(BR.item, item)
             bindView(holder.binding, item, position)
         } catch (e: IndexOutOfBoundsException) {
             bind(holder.binding, position)

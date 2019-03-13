@@ -58,9 +58,11 @@ android {
         }
 
         def API_KEY = "f64c520a006b21aa8ea0f224091f1bfc"
+        def IMAGE_URL = "http://image.tmdb.org/t/p/w342"
 
         variant.buildConfigField "String", "BASE_URL", "\"${BASE_URL}\""
         variant.buildConfigField "String", "API_KEY", "\"${API_KEY}\""
+        variant.buildConfigField "String", "IMAGE_URL", "\"${IMAGE_URL}\""
     }
 
     testOptions {

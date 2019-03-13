@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
@@ -138,6 +139,14 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
     }
 
     fun addChildFragment(
+        fragment: Fragment, container: Int, TAG: String?, addToBackStack: Boolean = false
+    ) {
+        activity?.supportFragmentManager?.beginTransaction()?.add(
+            container, fragment, TAG
+        )?.apply { commitTransaction(this, addToBackStack) }
+    }
+
+    fun addChildFragment(
         parentFragment: Fragment = this, containerViewId: Int,
         targetFragment: Fragment, TAG: String?, addToBackStack: Boolean = false,
         transit: Int = -1
@@ -173,5 +182,17 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
 
     open fun onBack(): Boolean {
         return false
+    }
+
+    fun setTitleToolbar(titleToolbar: String) {
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).apply {
+                supportActionBar?.apply {
+                    title = titleToolbar
+                    setDisplayHomeAsUpEnabled(true)
+                    setDisplayShowHomeEnabled(true)
+                }
+            }
+        }
     }
 }

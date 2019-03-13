@@ -1,7 +1,6 @@
 package com.example.movie_kotlin_clean.ui.screen.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.example.movie_kotlin_clean.R
 import com.example.movie_kotlin_clean.databinding.FragmentMainBinding
 import com.example.movie_kotlin_clean.ui.base.BaseFragment
@@ -47,9 +46,4 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
             }
         }
     }
-
-//    fun replaceFragment(fragment: Fragment, TAG: String) {
-//        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frame_layout, fragment, TAG)
-//            ?.commit()
-//    }
 }
