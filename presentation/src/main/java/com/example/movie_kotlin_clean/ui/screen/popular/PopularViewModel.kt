@@ -12,6 +12,7 @@ class PopularViewModel(
     val movieItem: MovieItemMapper
 ) : BaseLoadMoreRefreshViewModel<MovieItem>() {
     override fun loadData(page: Int) {
+        isLoading.value = true
         val hashMap = HashMap<String, String>()
         addDisposable(
             repository.getMoviesApi(hashMap)
@@ -21,6 +22,7 @@ class PopularViewModel(
                     }
                 }
                 .subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
+                .doFinally { isLoading.value = false }
                 .subscribe({
                     onLoadSuccess(1, it)
                 }, {
