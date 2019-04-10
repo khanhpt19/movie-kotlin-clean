@@ -7,5 +7,5 @@ import io.reactivex.Single
 interface MovieRepository : Repository {
     fun getMovieDetail(id: String): Single<Movie>
 
-    fun getMoviesApi(hashMap: HashMap<String, String>): Single<List<Movie>>
+    fun getMoviesApi(fromServer: Boolean, page: Int?): Single<List<Movie>>
 }

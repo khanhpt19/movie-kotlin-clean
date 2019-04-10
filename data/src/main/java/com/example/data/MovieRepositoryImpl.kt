@@ -10,8 +10,8 @@ class MovieRepositoryImpl constructor(
     private val movieApi: MovieApi,
     private val movieEntityMapper: MovieEntityMapper
 ) : MovieRepository {
-    override fun getMoviesApi(hashMap: HashMap<String, String>): Single<List<Movie>> {
-        return movieApi.getMoviesApi().map { response ->
+    override fun getMoviesApi(fromServer: Boolean, page: Int?): Single<List<Movie>> {
+        return movieApi.getMoviesApi(page).map { response ->
             response.results?.map {
                 movieEntityMapper.mapToDomain(it)
             }
