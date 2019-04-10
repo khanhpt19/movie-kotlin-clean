@@ -11,7 +11,7 @@ open class GetMoviesUseCase constructor(
 ) : UseCase<GetMoviesUseCase.Params?, Single<List<Movie>>>() {
     override fun createObservable(params: Params?): Single<List<Movie>> {
         params?.apply {
-            return movieRepository.getMoviesApi(params.hashMap)
+            return movieRepository.getMoviesApi(params.fromServer, params.page)
         }
         return Single.error { Throwable(Constants.PARAMS_ERROR) }
     }
@@ -20,5 +20,5 @@ open class GetMoviesUseCase constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    data class Params(val hashMap: HashMap<String, String>)
+    data class Params(val fromServer: Boolean, val page: Int?)
 }

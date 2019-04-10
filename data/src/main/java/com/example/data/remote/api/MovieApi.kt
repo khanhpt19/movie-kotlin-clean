@@ -5,11 +5,11 @@ import com.example.data.remote.response.BaseResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.QueryMap
+import retrofit2.http.Query
 
 interface MovieApi {
     @GET("movie/popular")
-    fun getMoviesApi(@QueryMap hashMap: HashMap<String, String> = HashMap()): Single<BaseResponse>
+    fun getMoviesApi(@Query("page") page: Int?): Single<BaseResponse>
 
     @GET("movie/{id}")
     fun getMovieDetail(@Path("id") id: String): Single<MovieEntity>
